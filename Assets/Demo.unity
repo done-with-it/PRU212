@@ -54878,7 +54878,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: 24.26, y: 3.79, z: -10}
+=======
+  m_LocalPosition: {x: 8.69, y: 3.98, z: -10}
+>>>>>>> parent of be7fac6 (Thêm thuoc tinh CAVE vào BackGround)
 =======
   m_LocalPosition: {x: 8.69, y: 3.98, z: -10}
 >>>>>>> parent of be7fac6 (Thêm thuoc tinh CAVE vào BackGround)
