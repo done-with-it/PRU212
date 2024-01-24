@@ -1,0 +1,3 @@
+23-1-2024
+	- Player đã add animation đứng dựt (IDE) và chạy (Running)
+	- Code đã được up lên github vào 9:43 tối
