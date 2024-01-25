@@ -1,0 +1,11 @@
+24-1-2024
+	- Thêm vào Player tính năng quay lưng vẫn theo góc nhìn của nhân vật (trước sau đều quay)
+	- Chuyển phần code chuyển động => vào folder Scripts
+	- Thêm vào player animation nhảy lên (Jump) và nhảy rơi (Jump falling)
+	- Chỉnh sửa phần code PlayerMovent liên quan đến việc triển khai method
+	- Thêm method set cho player không thể bám tường (hiện tại đang commment lại)
+	- Chỉnh sửa map thêm 1 chút liên quan đến Ground
+
+23-1-2024
+	- Player đã add animation đứng dựt (IDE) và chạy (Running)
+	- Code đã được up lên github vào 9:43 tối
