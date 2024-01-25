@@ -2,6 +2,11 @@
 	- Chỉnh sửa Pixel của project 
 	- chuyển pixel tổng từ 16 => 15 
 	- Thêm Far-Grounds (Scene1)
+	- Merge Code từ Hoàng (Hoag2) vào main 
+	- Chỉnh sửa lại cấu trúc bố trí của Assets (Đã add Scene của hoàng vào main)
+	- Đang có bug ở Scene1 lỗi Ground bị hư (Sửa xong sẽ xóa dòng này) 	
+`	- Đã Xóa Sample Scene được tạo sẵn của Unity 
+	- Code được đẩy lên vào 10:55 tối
 
 24-1-2024
 	- Thêm vào Player tính năng quay lưng vẫn theo góc nhìn của nhân vật (trước sau đều quay)
