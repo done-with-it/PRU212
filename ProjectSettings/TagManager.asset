@@ -11,7 +11,11 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< Updated upstream
   - 
+=======
+  - ground
+>>>>>>> Stashed changes
   - 
   - 
   - 
@@ -41,12 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 2096734077
+  - name: background
+    uniqueID: 1957067655
     locked: 0
-  - name: Ground
-    uniqueID: 1428384379
+  - name: ground
+    uniqueID: 1088241539
     locked: 0
-  - name: Character
-    uniqueID: 3211779729
+  - name: character
+    uniqueID: 3287308045
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2177800847
     locked: 0
