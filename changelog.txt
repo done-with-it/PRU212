@@ -1,3 +1,8 @@
+25-1-2024 
+	- Chỉnh sửa Pixel của project 
+	- chuyển pixel tổng từ 16 => 15 
+	- Thêm Far-Grounds (Scene1)
+
 24-1-2024
 	- Thêm vào Player tính năng quay lưng vẫn theo góc nhìn của nhân vật (trước sau đều quay)
 	- Chuyển phần code chuyển động => vào folder Scripts
