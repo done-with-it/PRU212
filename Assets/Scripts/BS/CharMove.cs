@@ -37,14 +37,14 @@ public class CharMove : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         // Check if the character is grounded
-        if (IsGrounded())
+        if (IsGrounded() || IsAgainstWall())
         {
-            remainingJumps = 1; // Reset the remaining jumps when grounded
+            remainingJumps = 2; // Reset the remaining jumps when grounded or against a wall
         }
 
         // Xử lý nhảy chỉ khi đối tượng đang nằm trên mặt đất và có lượt nhảy còn lại
         if (Input.GetButtonDown("Jump") 
-          // && remainingJumps > 0
+           && remainingJumps > 0
             )
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -58,17 +58,22 @@ public class CharMove : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
-    } 
-
+    }
+    private bool IsAgainstWall()
+    {
+        // Check if the character is against a wall
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, .1f, jumpableGround)
+            || Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, .1f, jumpableGround);
+    }
     private void UpdateAnimationUpdate()
     {
         MovementState state;
-        if (dirX > 0f)
+        if (dirX > 0f && !IsAgainstWall())
         {
             state = MovementState.running;
             sprite.flipX = false;
         }
-        else if (dirX < 0f)
+        else if (dirX < 0f && !IsAgainstWall())
         {
             state = MovementState.running;
             sprite.flipX = true;
