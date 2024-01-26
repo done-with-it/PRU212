@@ -2,6 +2,7 @@
 	- Chỉnh sửa lại ground (Scene1)
 	- Merge code Scene2 vào main
 	- Thêm layer Far-Grounds (Scene1)
+	- Thêm 1 chút thử liên quan đến nhánh binh
 
 25-1-2024 
 	- Chỉnh sửa Pixel của project 
