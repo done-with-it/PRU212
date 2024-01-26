@@ -1,5 +1,6 @@
 26-1-2024
 	- Chỉnh sửa lại ground (Scene1)
+	- Merge code Scene2 vào main
 
 25-1-2024 
 	- Chỉnh sửa Pixel của project 
