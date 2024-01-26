@@ -1,6 +1,7 @@
 26-1-2024
 	- Chỉnh sửa lại ground (Scene1)
 	- Merge code Scene2 vào main
+	- Thêm layer Far-Grounds (Scene1)
 
 25-1-2024 
 	- Chỉnh sửa Pixel của project 
