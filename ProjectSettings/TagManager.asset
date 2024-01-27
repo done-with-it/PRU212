@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Bridge
   - 
   - 
   - 
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1428384379
+    locked: 0
+  - name: Brigde
+    uniqueID: 2744115933
     locked: 0
   - name: 'trap '
     uniqueID: 386455037

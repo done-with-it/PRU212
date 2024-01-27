@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
     {
         idle, running, jumping, falling, croush
     }
-    private MovementState state = MovementState.idle;
+    //private MovementState state = MovementState.idle; (Unity Báo Thừa Code)
     private int remainingJumps = 0; // Adjust this to the desired number of jumps
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
+         //RaycastHit hit; (Unity Báo Thừa Code)
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
