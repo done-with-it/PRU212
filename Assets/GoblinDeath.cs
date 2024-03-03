@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-public class CharacterDeath : MonoBehaviour
+
+public class GoblinDeath : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
@@ -15,7 +15,7 @@ public class CharacterDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Trap") || collision.gameObject.CompareTag("Goblin"))
+        if (collision.gameObject.CompareTag("Trap"))
         {
             Die();
         }
@@ -24,9 +24,5 @@ public class CharacterDeath : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("Death");
-    }
-    private void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
