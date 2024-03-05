@@ -17726,7 +17726,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1083187567
-  m_SortingLayer: 8
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6eff83a719e16f248bea1fd8ff19034e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -89470,6 +89470,7 @@ GameObject:
   - component: {fileID: 726240302}
   - component: {fileID: 726240303}
   - component: {fileID: 726240304}
+  - component: {fileID: 726240305}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -89516,7 +89517,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1083187567
-  m_SortingLayer: 8
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -89608,7 +89609,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3125, y: 2.75}
+    oldSize: {x: 1.5, y: 2.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -89667,6 +89668,20 @@ MonoBehaviour:
     m_Bits: 192
   jumpForce: 14
   moveSpeed: 7
+--- !u!114 &726240305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726240295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814d0b80722a948848da683119651ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathEffect: {fileID: 726240295}
 --- !u!1 &734523563
 GameObject:
   m_ObjectHideFlags: 0
@@ -92144,6 +92159,7 @@ GameObject:
   - component: {fileID: 1363147343}
   - component: {fileID: 1363147344}
   - component: {fileID: 1363147345}
+  - component: {fileID: 1363147346}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Goblin
@@ -92262,7 +92278,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1083187567
-  m_SortingLayer: 8
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92333,7 +92349,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363147336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 665229526aaeeab40b236925fd0f4d79, type: 3}
   m_Name: 
@@ -92356,6 +92372,25 @@ MonoBehaviour:
   moveSpeed: 5
   stayDuration: 3
   attackRange: 1.5
+--- !u!114 &1363147346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363147336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d0f5b9eebc24885a03682a86eb518a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 20
+  enragedAttackDamage: 40
+  attackOffset: {x: 0, y: 0, z: 0}
+  attackRange: 1
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1482409854
 GameObject:
   m_ObjectHideFlags: 0
@@ -92607,6 +92642,7 @@ GameObject:
   - component: {fileID: 1632423710}
   - component: {fileID: 1632423709}
   - component: {fileID: 1632423708}
+  - component: {fileID: 1632423715}
   m_Layer: 0
   m_Name: Goblin2
   m_TagString: Goblin
@@ -92806,7 +92842,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1083187567
-  m_SortingLayer: 8
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92819,6 +92855,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1632423715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632423706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d0f5b9eebc24885a03682a86eb518a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 20
+  enragedAttackDamage: 40
+  attackOffset: {x: 0, y: 0, z: 0}
+  attackRange: 1
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1663653002
 GameObject:
   m_ObjectHideFlags: 0
