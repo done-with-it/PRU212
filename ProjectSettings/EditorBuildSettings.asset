@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Start Menu.unity
+    guid: dd7e95c2725073f4ba03ad048713b19b
+  - enabled: 1
+    path: Assets/Scenes/Dante.unity
+    guid: cd7d793c7ca224a1b86a02da62333999
+  - enabled: 1
+    path: Assets/Scenes/End Menu.unity
+    guid: fb48143ea54bdd9489e9c9b8ee6b4818
   m_configObjects: {}
