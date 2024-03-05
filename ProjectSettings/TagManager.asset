@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Ground
   - Bridge
-  - 
+  - Skeleton
   - 
   - 
   - 
@@ -55,9 +55,18 @@ TagManager:
   - name: Brigde
     uniqueID: 2744115933
     locked: 0
+  - name: Object
+    uniqueID: 1910970945
+    locked: 0
+  - name: Grass
+    uniqueID: 654611453
+    locked: 0
   - name: 'trap '
     uniqueID: 386455037
     locked: 0
   - name: Character
     uniqueID: 3211779729
+    locked: 0
+  - name: Skeleton
+    uniqueID: 3677051369
     locked: 0
