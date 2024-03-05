@@ -12,7 +12,9 @@ public class GoblinMovementV2 : MonoBehaviour
     private Animator anim;
     private Vector3 targetPosition;
     private bool isWaiting = false;
+    private bool isAttacking = false;
     private float waitTimer = 0f;
+    public float attackRange = 1.5f;
 
     private enum MovementState
     {
@@ -27,12 +29,18 @@ public class GoblinMovementV2 : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>(); // Initialize the SpriteRenderer component
 
         // Start by moving towards point B
-        targetPosition = pointB.position;
+        targetPosition = new Vector3(pointB.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAttacking)
+        {
+            // If attacking, stop movement
+            return;
+        }
+
         // Move towards the target position
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
@@ -46,16 +54,14 @@ public class GoblinMovementV2 : MonoBehaviour
 
         if (isWaiting)
         {
-            // Increment the timer
+            // Increment the timer  
             waitTimer += Time.deltaTime;
 
             // Check if the waiting duration has passed
             if (waitTimer >= stayDuration)
             {
                 // Toggle between points A and B
-                targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
-
-                // Reset attack flag when changing direction
+                targetPosition = (targetPosition.x == pointA.position.x) ? new Vector3(pointB.position.x, transform.position.y, transform.position.z) : new Vector3(pointA.position.x, transform.position.y, transform.position.z);
 
                 isWaiting = false; // Stop waiting
             }
@@ -65,25 +71,40 @@ public class GoblinMovementV2 : MonoBehaviour
         UpdateAnimationState();
     }
 
-
     private void UpdateAnimationState()
     {
         MovementState state;
-        // Determine movement direction and set animation state
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f &&
-            (targetPosition == pointA.position || targetPosition == pointB.position))
+
+        // Determine if the player is within attack range
+        if (Vector3.Distance(transform.position, player.position) <= attackRange)
         {
-            state = MovementState.idle; // Monster is idle
+            // Initiate attack animation or logic here
+            state = MovementState.attack;
+            isAttacking = true;
         }
         else
         {
-            state = MovementState.running; // Monster is running
-                                           // Set the sprite's flipX based on movement direction
-            sprite.flipX = targetPosition == pointA.position;
+            // Determine movement direction and set animation state
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f &&
+                (targetPosition.x == pointA.position.x || targetPosition.x == pointB.position.x))
+            {
+                state = MovementState.idle; // Monster is idle
+            }
+            else
+            {
+                state = MovementState.running; // Monster is running
+                // Set the sprite's flipX based on movement direction
+                sprite.flipX = targetPosition.x == pointA.position.x;
+            }
         }
-
 
         // Update the animation state parameter
         anim.SetInteger("state", (int)state);
+    }
+
+    // Call this method when the attack animation finishes
+    public void OnAttackAnimationFinished()
+    {
+        isAttacking = false;
     }
 }
