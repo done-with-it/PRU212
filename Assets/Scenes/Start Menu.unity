@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35449e4343b57ec4cb3ed660b8a98a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelName: Dante
 --- !u!1 &2007411209
 GameObject:
   m_ObjectHideFlags: 0
