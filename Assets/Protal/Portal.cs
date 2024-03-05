@@ -9,7 +9,8 @@ public class Portal : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "character")
+        if (collision.gameObject.name == "character"
+            || collision.gameObject.name == "Player")
         {
             CompleteLevel();
         }
