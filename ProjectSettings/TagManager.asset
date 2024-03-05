@@ -13,14 +13,9 @@ TagManager:
   - Water
   - UI
   - Ground
-<<<<<<< Updated upstream
-  - 
-  - 
-=======
   - Bridge
   - Boss
->>>>>>> Stashed changes
-  - 
+  - Player
   - 
   - 
   - 
@@ -50,8 +45,14 @@ TagManager:
   - name: Background
     uniqueID: 2096734077
     locked: 0
+  - name: Far_Grounds
+    uniqueID: 2228540867
+    locked: 0
   - name: Ground
     uniqueID: 1428384379
+    locked: 0
+  - name: Brigde
+    uniqueID: 2744115933
     locked: 0
   - name: 'trap '
     uniqueID: 386455037
