@@ -8,6 +8,9 @@ TagManager:
   - Goblin
   - Sea
   - Coin
+  - Ground
+  - Grass
+  - Skeleton
   layers:
   - Default
   - TransparentFX
@@ -21,8 +24,6 @@ TagManager:
   - 
   - Boss
   - Player
-  - 
-  - 
   - 
   - 
   - 
@@ -58,6 +59,12 @@ TagManager:
     locked: 0
   - name: Brigde
     uniqueID: 2744115933
+    locked: 0
+  - name: Object
+    uniqueID: 7960797
+    locked: 0
+  - name: Grass
+    uniqueID: 3652861949
     locked: 0
   - name: 'trap '
     uniqueID: 386455037
