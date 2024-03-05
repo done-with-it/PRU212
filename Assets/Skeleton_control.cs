@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -7,10 +7,20 @@ public class Skeleton_control : MonoBehaviour
 {
     public GameObject pointA;
     public GameObject pointB;
+    public Transform character;
     private Rigidbody2D rb;
     private Animator animator;
     private Transform currentPoint;
     public float speed;
+    public float attackRange;
+    public float attackCooldown;
+    private float lastAttackTime;
+    public GameObject attackHitbox;
+
+    private enum MovementState
+    {
+        attack, hit, die
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +53,32 @@ public class Skeleton_control : MonoBehaviour
             flip();
             currentPoint = pointB.transform;
         }
+
+        // Kiểm tra khoảng cách với player
+        float distanceToPlayer = Vector2.Distance(transform.position, character.position);
+        if (distanceToPlayer <= attackRange && Time.time - lastAttackTime > attackCooldown)
+        {
+            // Tấn công
+            Attack();
+        }
     }
+    void Attack()
+    {
+        lastAttackTime = Time.time;
+        // Kích hoạt hitbox tấn công
+        attackHitbox.SetActive(true);
+        animator.SetTrigger("attack"); // Kích hoạt animation attack
+
+        // Tắt hitbox sau một khoảng thời gian attackCooldown
+        Invoke("DeactivateAttackHitbox", attackCooldown);
+    }
+
+    void DeactivateAttackHitbox()
+    {
+        attackHitbox.SetActive(false);
+    }
+
+
     private void flip()
     {
         Vector3 localScale = transform.localScale;
@@ -56,4 +91,5 @@ public class Skeleton_control : MonoBehaviour
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
     }
+
 }
