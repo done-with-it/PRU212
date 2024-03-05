@@ -19,6 +19,8 @@ TagManager:
   - Bridge
   - Skeleton
   - 
+  - Boss
+  - Player
   - 
   - 
   - 
@@ -56,12 +58,6 @@ TagManager:
     locked: 0
   - name: Brigde
     uniqueID: 2744115933
-    locked: 0
-  - name: Object
-    uniqueID: 1910970945
-    locked: 0
-  - name: Grass
-    uniqueID: 654611453
     locked: 0
   - name: 'trap '
     uniqueID: 386455037
