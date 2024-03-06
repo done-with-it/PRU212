@@ -17,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
         idle, running, jumping, falling, croush
     }
     //private MovementState state = MovementState.idle; (Unity Báo Thừa Code)
-    private int remainingJumps = 0; // Adjust this to the desired number of jumps
+    private int remainingJumps = 1; // Adjust this to the desired number of jumps
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +32,16 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         //RaycastHit hit; (Unity Báo Thừa Code)
         dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+        // Check if there's a wall in the direction of movement
+        bool isTouchingWall = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right * Mathf.Sign(dirX), .1f, jumpableGround);
+
+        // Only allow movement if not touching a wall
+        if (!isTouchingWall)
+        {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
 
         // Check if the character is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -49,10 +56,8 @@ public class CharacterMovement : MonoBehaviour
             remainingJumps--;
         }
 
-
         UpdateAnimationUpdate();
     }
-
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
