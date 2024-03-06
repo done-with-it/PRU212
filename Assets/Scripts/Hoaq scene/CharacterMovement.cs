@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         // Check if the character is grounded
-        if (IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             remainingJumps = 1; // Reset the remaining jumps when grounded
         }
