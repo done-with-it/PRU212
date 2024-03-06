@@ -50,10 +50,13 @@ public class CharacterMovement : MonoBehaviour
         }
 
         // Xử lý nhảy chỉ khi đối tượng đang nằm trên mặt đất và có lượt nhảy còn lại
-        if (Input.GetButtonDown("Jump") && remainingJumps > 0)
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || remainingJumps > 0))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            remainingJumps--;
+            if (!IsGrounded()) // If not grounded, decrement remaining jumps
+            {
+                remainingJumps--;
+            }
         }
         UpdateAnimationUpdate();
     }
