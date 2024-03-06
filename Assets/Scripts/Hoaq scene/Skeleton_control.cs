@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Skeleton_control : MonoBehaviour
@@ -15,23 +14,39 @@ public class Skeleton_control : MonoBehaviour
     public float attackRange;
     public float attackCooldown;
     private float lastAttackTime;
-    public GameObject attackHitbox;
+    private BoxCollider2D attackCollider;
+    private bool hasBarrier = false;
+    public float barrierDuration = 2f;
+    private float barrierEndTime;
+    public int maxHealth = 100;
+    private int currentHealth;
+    public GameObject hitEffectPrefab;
 
-    private enum MovementState
+    private enum AttackState
     {
-        attack, hit, die
+        None,
+        Attack1,
+        Attack2
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private AttackState currentAttackState = AttackState.None;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentPoint = pointB.transform;
         animator.SetBool("isRunning", true);
+
+        // Lấy BoxCollider2D từ GameObject của Skeleton
+        attackCollider = GetComponent<BoxCollider2D>();
+
+        // Khởi tạo máu ban đầu
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == pointB.transform)
@@ -54,28 +69,117 @@ public class Skeleton_control : MonoBehaviour
             currentPoint = pointB.transform;
         }
 
+        // Kiểm tra và kích hoạt barrier
+        if (hasBarrier && Time.time >= barrierEndTime)
+        {
+            DeactivateBarrier();
+        }
+
         // Kiểm tra khoảng cách với player
         float distanceToPlayer = Vector2.Distance(transform.position, character.position);
         if (distanceToPlayer <= attackRange && Time.time - lastAttackTime > attackCooldown)
         {
-            // Tấn công
-            Attack();
+            int randomAttack = Random.Range(1, 3); // Chọn ngẫu nhiên giữa attack1 và attack2
+            if (randomAttack == 1)
+            {
+                Attack1();
+            }
+            else
+            {
+                Attack2();
+            }
         }
     }
-    void Attack()
+    void ActivateBarrier()
     {
-        lastAttackTime = Time.time;
-        // Kích hoạt hitbox tấn công
-        attackHitbox.SetActive(true);
-        animator.SetTrigger("attack"); // Kích hoạt animation attack
-
-        // Tắt hitbox sau một khoảng thời gian attackCooldown
-        Invoke("DeactivateAttackHitbox", attackCooldown);
+        hasBarrier = true;
+        barrierEndTime = Time.time + 2f; // Thời gian bất tử khi barrier được kích hoạt (ví dụ: 2 giây)
+                                         // Thực hiện các hành động khi có barrier, ví dụ: thay đổi màu sắc, hiệu ứng, ...
     }
 
-    void DeactivateAttackHitbox()
+    void DeactivateBarrier()
     {
-        attackHitbox.SetActive(false);
+        hasBarrier = false;
+        // Thực hiện các hành động khi không còn barrier, ví dụ: đổi lại màu sắc ban đầu, ...
+    }
+
+
+
+    private void Attack1()
+    {
+        lastAttackTime = Time.time;
+        // Kích hoạt collider tấn công
+        attackCollider.enabled = true;
+        animator.SetTrigger("attack1"); // Kích hoạt animation attack1
+
+        // Tắt collider sau một khoảng thời gian attackCooldown
+        Invoke("DeactivateAttackCollider", attackCooldown);
+
+        // Chuyển sang trạng thái tấn công 1
+        currentAttackState = AttackState.Attack1;
+
+        // Giảm máu của Skeleton
+        TakeDamage(20); // Số máu mất sau mỗi lần tấn công
+    }
+
+    private void Attack2()
+    {
+        lastAttackTime = Time.time;
+        // Kích hoạt collider tấn công
+        attackCollider.enabled = true;
+        animator.SetTrigger("attack2"); // Kích hoạt animation attack2
+
+        // Tắt collider sau một khoảng thời gian attackCooldown
+        Invoke("DeactivateAttackCollider", attackCooldown);
+
+        // Chuyển sang trạng thái tấn công 2
+        currentAttackState = AttackState.Attack2;
+
+        // Giảm máu của Skeleton
+        TakeDamage(30); // Số máu mất sau mỗi lần tấn công
+    }
+
+    private void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Xử lý khi Skeleton chết, ví dụ: phát hiệu ứng, phá hủy đối tượng, ...
+
+        Destroy(gameObject);
+    }
+    public void TakeDamagePlayer(int damage)
+    {
+        if (!hasBarrier)
+        {
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                // Kích hoạt barrier
+                ActivateBarrier();
+            }
+        }
+    }
+
+
+
+    private void DeactivateAttackCollider()
+    {
+        attackCollider.enabled = false;
+        // Chuyển về trạng thái tấn công None sau khi tấn công kết thúc
+        currentAttackState = AttackState.None;
     }
 
 
@@ -85,11 +189,11 @@ public class Skeleton_control : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-    public void OnDrawGizmos()
+
+    private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
     }
-
 }
