@@ -16896,7 +16896,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978776107}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5e47f28920a17384eb9ee482a2ddd8eb, type: 3}
@@ -18184,7 +18184,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3125, y: 2.75}
+    oldSize: {x: 1.5, y: 2.75}
     newSize: {x: 4.3125, y: 2.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
