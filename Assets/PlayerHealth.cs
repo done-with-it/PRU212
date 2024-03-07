@@ -9,20 +9,35 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject deathEffect;
     private Animator animator;
+    private bool isHurt = false;
     void Start()
     {
         animator = GetComponent<Animator>();
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
-
-        StartCoroutine(DamageAnimation());
-
-        if (health <= 0)
+        if (!isHurt) // Chỉ xử lý sát thương nếu người chơi chưa bị tổn thương trước đó
         {
-            Die();
+            health -= damage;
+            if (animator != null)
+            {
+                animator.SetTrigger("Hurt");
+            }
+            StartCoroutine(DamageAnimation());
+
+            if (health <= 0)
+            {
+                Die();
+            }
+
+            isHurt = true; // Đánh dấu rằng người chơi đã bị tổn thương
+            StartCoroutine(ResetHurtFlag()); // Gọi hàm để reset cờ isHurt sau một khoảng thời gian
         }
+    }
+    IEnumerator ResetHurtFlag()
+    {
+        yield return new WaitForSeconds(0.5f); // Đợi một khoảng thời gian trước khi reset cờ isHurt
+        isHurt = false; // Reset cờ isHurt để cho phép người chơi nhận sát thương tiếp theo
     }
 
     void Die()
