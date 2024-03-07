@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +8,9 @@ public class PlayerAttack : MonoBehaviour
     public bool isAttacking = false;
     public static PlayerAttack instance;
     public Transform HitBox;
-    public float attackRange = 1f;
+    public float attackRange;
     public LayerMask enemyLayers;
+    public int attackDamage = 40;
     // Start is called before the first frame update
 
     private void Awake()
@@ -24,7 +25,9 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetAttackRange(1.5f);
         Attack();
+        SetAttackRange(0);
     }
     void Attack()
     {
@@ -36,8 +39,12 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit "+ enemy.name);
+            enemy.GetComponent<Skeleton_control>().TakeDamage(attackDamage);
         }
+    }
+    void SetAttackRange(float range)
+    {
+        attackRange = range;
     }
     private void OnDrawGizmos()
     {

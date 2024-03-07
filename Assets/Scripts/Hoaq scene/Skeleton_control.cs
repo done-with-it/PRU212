@@ -137,14 +137,14 @@ public class Skeleton_control : MonoBehaviour
     {
         hasBarrier = true;
         barrierEndTime = Time.time + barrierDuration;
-        animator.SetBool("Shield", true);
+        animator.SetBool("barrier", true);
     }
 
     // Tắt Barrier
     void DeactivateBarrier()
     {
         hasBarrier = false;
-        animator.SetBool("Shield", false);
+        animator.SetBool("barrier", false);
     }
 
     // Tấn công 1
@@ -171,8 +171,11 @@ public class Skeleton_control : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        animator.SetTrigger("isDeath");
+        animator.SetBool("isDeath", true);
+        this.enabled = false;
+        
         Invoke("FadeOutAndDestroy", 5f); // Sau 5 giây gọi hàm FadeOutAndDestroy
+        Debug.Log("Enemy die!");
     }
 
     // Hàm xóa đối tượng sau khi chết
@@ -182,12 +185,12 @@ public class Skeleton_control : MonoBehaviour
     }
 
     // Nhận sát thương từ player
-    public void TakeDamagePlayer(int damage)
+    public void TakeDamage(int damage)
     {
         if (!hasBarrier)
         {
             currentHealth -= damage;
-
+            animator.SetTrigger("isHit");
             if (currentHealth <= 0)
             {
                 Die();
