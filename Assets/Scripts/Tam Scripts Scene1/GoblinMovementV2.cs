@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinMovementV2 : MonoBehaviour
 {
+    private Rigidbody2D rb;
     public Transform pointA;
     public Transform pointB;
     public Transform player;
@@ -104,13 +105,4 @@ public class GoblinMovementV2 : MonoBehaviour
         isAttacking = false;
     }
 
-    // Thêm một phương thức để gọi khi goblin chết
-    public void Die()
-    {
-        isDead = true;
-        isAttacking = false;
-        anim.SetTrigger("death");
-        // Dừng bất kỳ logic di chuyển nào ở đây nếu cần
-        this.enabled = false; // Tắt script di chuyển khi chết
-    }
 }

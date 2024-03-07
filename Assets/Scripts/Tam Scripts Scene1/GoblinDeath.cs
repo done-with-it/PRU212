@@ -22,7 +22,7 @@ public class GoblinDeath : MonoBehaviour
     }
     private void Die()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         anim.SetTrigger("death");
     }
 }
