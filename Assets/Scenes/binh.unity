@@ -16896,7 +16896,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978776107}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5e47f28920a17384eb9ee482a2ddd8eb, type: 3}
@@ -18106,7 +18106,7 @@ Transform:
   m_GameObject: {fileID: 1243798289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.79, y: -0.66, z: 0}
+  m_LocalPosition: {x: -12.76, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18184,7 +18184,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3125, y: 2.75}
+    oldSize: {x: 1.5, y: 2.75}
     newSize: {x: 4.3125, y: 2.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
