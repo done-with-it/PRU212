@@ -7,15 +7,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     //private BoxCollider2D coll;
     private SpriteRenderer sprite;
-    private Animator anim;
-
+    public Animator anim;
+    public bool isAttack = false;
     [SerializeField] private LayerMask jumpableGoround;
     
     private float dirX = 0f;
     [SerializeField] private float movementSpeed = 6f;
     [SerializeField] private float jumpForce = 8f;
-
+    public static PlayerMovement instance;
     private enum MovementState { idle, running, jumping, falling }
+    
 
     // Start is called before the first frame update
     private void Start()
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         UpdateAnimationUpdate();
+        Attack();
     }
 
     private void UpdateAnimationUpdate()
@@ -70,9 +72,12 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
-    // Hàm này dùng để check xem khi đụng tường là auto rớt
-    //private bool IsGrounded() 
-    //{
-    //    return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGoround);
-    //}
+    void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.G) && !isAttack)
+        {
+            isAttack = true;
+        }
+    }
+
 }
