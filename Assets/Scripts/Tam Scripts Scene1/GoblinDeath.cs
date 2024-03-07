@@ -15,7 +15,7 @@ public class GoblinDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Trap"))
+        if (collision.gameObject.CompareTag("Trap") || (collision.gameObject.CompareTag("Player")))
         {
             Die();
         }
@@ -23,6 +23,6 @@ public class GoblinDeath : MonoBehaviour
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
-        anim.SetTrigger("Death");
+        anim.SetTrigger("death");
     }
 }
