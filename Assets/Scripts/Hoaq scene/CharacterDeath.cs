@@ -13,12 +13,13 @@ public class CharacterDeath : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-    //|| collision.gameObject.CompareTag("Goblin") 
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap") 
-            || collision.gameObject.CompareTag("Sea"))
+            || collision.gameObject.CompareTag("Sea")
+            || collision.gameObject.CompareTag("Goblin") )
         {
             Die();
         }
