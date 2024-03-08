@@ -10,7 +10,7 @@ public class MushroomMovement : MonoBehaviour
     private Vector3 targetPosition;
     private bool isWaiting = false;
     private float waitTimer = 0f;
-
+    public bool isFlipped = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,13 +68,24 @@ public class MushroomMovement : MonoBehaviour
         }
         else
         {
+            
             state = MovementState.running; // Monster is running
 
             // Flip sprite based on movement direction
-            if (movementDirection.x < 0f)
-                transform.localScale = new Vector3(-1f, 1f, 1f); // Flip sprite horizontally
-            else if (movementDirection.x > 0f)
-                transform.localScale = new Vector3(1f, 1f, 1f); // Reset sprite scale
+            if (movementDirection.x < 0f && isFlipped)
+            { 
+                transform.localScale = new Vector3(-1f, 1f, 1f); // Flip sprite horizontally              
+                transform.Rotate(0f, 180f, 0f);
+                isFlipped = false;
+            }
+               
+            else if (movementDirection.x > 0f && !isFlipped)
+            {
+                 transform.localScale = new Vector3(-1f, 1f, 1f); // Reset sprite scale           
+                transform.Rotate(0f, 180f, 0f);
+                isFlipped = true;
+            }
+
         }
 
         // Update the animation state parameter
