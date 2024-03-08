@@ -938,11 +938,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1419563907906518798, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 143
+      value: 140.7
       objectReference: {fileID: 0}
     - target: {fileID: 1419563907906518798, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -121
+      value: -116
       objectReference: {fileID: 0}
     - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -950,15 +950,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 202
+      value: 200.25
       objectReference: {fileID: 0}
     - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -419
+      value: -418
       objectReference: {fileID: 0}
     - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 206
+      value: 200.25
       objectReference: {fileID: 0}
     - target: {fileID: 6572576277593889429, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_Name
@@ -2971,6 +2971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a917a0a5bd4696a26eaee509e9a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
 --- !u!95 &1146403579
 Animator:
   serializedVersion: 5
@@ -53564,6 +53565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelName: Hoaq
+  completionSound: {fileID: 0}
 --- !u!61 &2065800488
 BoxCollider2D:
   m_ObjectHideFlags: 0
