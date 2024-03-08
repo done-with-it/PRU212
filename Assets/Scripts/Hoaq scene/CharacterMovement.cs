@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour
     {
         idle, running, jumping, falling, croush
     }
-    private MovementState state = MovementState.idle;
+   // private MovementState state = MovementState.idle;
     private int remainingJumps = 0; // Adjust this to the desired number of jumps
     private void Awake()
     {
@@ -32,16 +32,24 @@ public class CharacterMovement : MonoBehaviour
     }
     void Attack()
     {
-        // Kiểm tra xem nút tấn công đã được nhấn và đối tượng không trong trạng thái tấn công
-        if (Input.GetKeyDown(KeyCode.G) && !isAttack)
+        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0)) && !isAttack)
         {
             isAttack = true;
 
-            // Nếu tấn công, thì thực hiện các hành động tấn công
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(attackDamage);
+                }
+
+                MushoomHealth mushoomHealth = enemy.GetComponent<MushoomHealth>();
+                if (mushoomHealth != null)
+                {
+                    mushoomHealth.TakeDamage(attackDamage);
+                }
             }
         }
     }
@@ -88,9 +96,16 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
         dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+        // Check if there's a wall in the direction of movement
+        bool isTouchingWall = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right * Mathf.Sign(dirX), .1f, jumpableGround);
+
+        // Only allow movement if not touching a wall
+        if (!isTouchingWall)
+        {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
 
         // Check if the character is grounded
         if (IsGrounded())
@@ -99,18 +114,19 @@ public class CharacterMovement : MonoBehaviour
         }
 
         // Xử lý nhảy chỉ khi đối tượng đang nằm trên mặt đất và có lượt nhảy còn lại
-        if (Input.GetButtonDown("Jump") && remainingJumps > 0)
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || remainingJumps > 0))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            remainingJumps--;
+            if (!IsGrounded()) // If not grounded, decrement remaining jumps
+            {
+                remainingJumps--;
+            }
         }
-
 
         UpdateAnimationUpdate();
         UpdateAttackRangeDirection();
         Attack();
     }
-
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
