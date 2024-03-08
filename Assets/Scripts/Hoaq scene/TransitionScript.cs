@@ -22,7 +22,14 @@ public class TransitionScript : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerMovement.instance.isAttack = false;
+        if (PlayerMovement.instance != null)
+        {
+            PlayerMovement.instance.isAttack = false;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerMovement instance is null.");
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
