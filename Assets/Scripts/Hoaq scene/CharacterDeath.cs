@@ -7,7 +7,8 @@ public class CharacterDeath : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-
+    public Transform respawnPoint;
+    private bool die = true;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,13 +26,28 @@ public class CharacterDeath : MonoBehaviour
 
     private void Die()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         anim.SetTrigger("Death");
         Invoke("RestartLevel", 0.5f); // Restart after 0.5 seconds, adjust as needed
+        die = false;
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!ItemColettor.CoinCollected)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            die = true;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            transform.position = respawnPoint.position;
+            anim.SetInteger("state", 1);
+            die = true;
+        }
+        //  SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }

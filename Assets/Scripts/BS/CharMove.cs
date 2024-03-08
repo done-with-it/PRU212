@@ -29,21 +29,21 @@ public class CharMove : MonoBehaviour
     {
         instance = this;
     }
-    void Attack()
-    {
-        // Kiểm tra xem nút tấn công đã được nhấn và đối tượng không trong trạng thái tấn công
-        if (Input.GetKeyDown(KeyCode.G) && !isAttack)
-        {
-            isAttack = true;
+    //void Attack()
+    //{
+    //    // Kiểm tra xem nút tấn công đã được nhấn và đối tượng không trong trạng thái tấn công
+    //    if (Input.GetKeyDown(KeyCode.G) && !isAttack)
+    //    {
+    //        isAttack = true;
 
-            // Nếu tấn công, thì thực hiện các hành động tấn công
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-            }
-        }
-    }
+    //        // Nếu tấn công, thì thực hiện các hành động tấn công
+    //        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+    //        foreach (Collider2D enemy in hitEnemies)
+    //        {
+    //            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+    //        }
+    //    }
+    //}
 
     private void OnDrawGizmosSelected()
     {
@@ -110,7 +110,7 @@ public class CharMove : MonoBehaviour
 
         UpdateAnimationUpdate();
         UpdateAttackRangeDirection();
-        Attack();
+     //   Attack();
     }
     private bool IsGrounded()
     {
