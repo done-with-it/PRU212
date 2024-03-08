@@ -675,7 +675,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.75, y: 5.8125}
+    oldSize: {x: 8.752941, y: 5.8125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 384709425}
-  maxHealth: 100
+  maxHealth: 500
   healthBar: {fileID: 751519527}
   Blank: {fileID: 1936521071}
 --- !u!1 &462371855
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelName: end menu
-  completionSound: {fileID: 8300000, guid: 16078c66d821bac4abf994dc366afd5e, type: 3}
+  completionSound: {fileID: 8300000, guid: c90e3d52d68e8954394cdba06f749d10, type: 3}
 --- !u!61 &1016453159
 BoxCollider2D:
   m_ObjectHideFlags: 0
