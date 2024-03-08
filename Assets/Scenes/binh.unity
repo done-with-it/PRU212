@@ -18496,7 +18496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelName: kaneki
-  completionSound: {fileID: 0}
+  completionSound: {fileID: 8300000, guid: c90e3d52d68e8954394cdba06f749d10, type: 3}
 --- !u!114 &1424845916
 MonoBehaviour:
   m_ObjectHideFlags: 0

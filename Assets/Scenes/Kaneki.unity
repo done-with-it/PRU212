@@ -938,27 +938,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1419563907906518798, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 143
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 1419563907906518798, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -121
+      value: -62
       objectReference: {fileID: 0}
     - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -418
+      value: -309
       objectReference: {fileID: 0}
     - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 202
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -419
+      value: -310
       objectReference: {fileID: 0}
     - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 206
+      value: 131
       objectReference: {fileID: 0}
     - target: {fileID: 6572576277593889429, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_Name
@@ -2971,6 +2971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a917a0a5bd4696a26eaee509e9a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
 --- !u!95 &1146403579
 Animator:
   serializedVersion: 5
@@ -52475,10 +52476,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627682403}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e0cb7cb550cc0264390acad82fddf79b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 81fc074917874674bb84ecb480f9a549, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.446
   m_Pitch: 1
@@ -53564,6 +53565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelName: Hoaq
+  completionSound: {fileID: 0}
 --- !u!61 &2065800488
 BoxCollider2D:
   m_ObjectHideFlags: 0
