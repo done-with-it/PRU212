@@ -1,62 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
-    public int currentHealth; // Biến để lưu trữ lượng máu hiện tại
-
+    public int maxHealth = 100;
+    private int currentHealth;
     public GameObject deathEffect;
     private Animator animator;
     private bool isHurt = false;
 
+    public Image healthBar; // Reference to the health bar image
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        currentHealth = health; // Gán giá trị ban đầu cho currentHealth
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Goblin") || collision.gameObject.CompareTag("Skeleton"))
-        {
-            Debug.Log("Skeleton hit!");
-            TakeDamage(10);
-        }
+        currentHealth = maxHealth;
+        UpdateHealthBar();
     }
 
     public void TakeDamage(int damage)
     {
-        if (!isHurt) // Chỉ xử lý sát thương nếu người chơi chưa bị tổn thương trước đó
+        if (!isHurt)
         {
-            currentHealth -= damage; // Giảm lượng máu hiện tại
-            if (animator != null)
-            {
-                animator.SetTrigger("Hurt");
-            }
-            StartCoroutine(DamageAnimation());
-
+            currentHealth -= damage;
+            UpdateHealthBar();
             if (currentHealth <= 0)
             {
                 Die();
             }
-
-            isHurt = true; // Đánh dấu rằng người chơi đã bị tổn thương
-            StartCoroutine(ResetHurtFlag()); // Gọi hàm để reset cờ isHurt sau một khoảng thời gian
+            isHurt = true;
+            StartCoroutine(ResetHurtFlag());
         }
     }
 
     IEnumerator ResetHurtFlag()
     {
-        yield return new WaitForSeconds(0.5f); // Đợi một khoảng thời gian trước khi reset cờ isHurt
-        isHurt = false; // Reset cờ isHurt để cho phép người chơi nhận sát thương tiếp theo
+        yield return new WaitForSeconds(0.5f);
+        isHurt = false;
     }
 
     void Die()
     {
-        // Gọi animation "Death" bằng cách sử dụng Animator
         if (animator != null)
         {
             animator.SetTrigger("Death");
@@ -65,21 +51,18 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.LogError("Animator component is missing!");
         }
-
-        // Tạm dừng game trong 1 giây trước khi load lại scene
         StartCoroutine(ReloadScene());
     }
 
     IEnumerator ReloadScene()
     {
-        yield return new WaitForSeconds(1f); // Đợi 1 giây trước khi load lại scene
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator DamageAnimation()
     {
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
-
         for (int i = 0; i < 3; i++)
         {
             foreach (SpriteRenderer sr in srs)
@@ -100,5 +83,11 @@ public class PlayerHealth : MonoBehaviour
 
             yield return new WaitForSeconds(.1f);
         }
+    }
+
+    void UpdateHealthBar()
+    {
+        float healthPercent = (float)currentHealth / maxHealth;
+        healthBar.fillAmount = healthPercent;
     }
 }

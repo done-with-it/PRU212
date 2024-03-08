@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour
     {
         idle, running, jumping, falling, croush
     }
-    private MovementState state = MovementState.idle;
+   // private MovementState state = MovementState.idle;
     private int remainingJumps = 0; // Adjust this to the desired number of jumps
     private void Awake()
     {
@@ -32,16 +32,24 @@ public class CharacterMovement : MonoBehaviour
     }
     void Attack()
     {
-        // Kiểm tra xem nút tấn công đã được nhấn và đối tượng không trong trạng thái tấn công
-        if (Input.GetKeyDown(KeyCode.G) && !isAttack)
+        if ((Input.GetKeyDown(KeyCode.G) || Input.GetMouseButtonDown(0)) && !isAttack)
         {
             isAttack = true;
 
-            // Nếu tấn công, thì thực hiện các hành động tấn công
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(attackDamage);
+                }
+
+                MushoomHealth mushoomHealth = enemy.GetComponent<MushoomHealth>();
+                if (mushoomHealth != null)
+                {
+                    mushoomHealth.TakeDamage(attackDamage);
+                }
             }
         }
     }
@@ -100,7 +108,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         // Check if the character is grounded
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (IsGrounded())
         {
             remainingJumps = 1; // Reset the remaining jumps when grounded
         }
@@ -114,6 +122,7 @@ public class CharacterMovement : MonoBehaviour
                 remainingJumps--;
             }
         }
+
         UpdateAnimationUpdate();
         UpdateAttackRangeDirection();
         Attack();

@@ -22,7 +22,7 @@ public class Mechanic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ItemColettor.CoinCollected)
+        if (ItemColettor.CoinCollected || EnemyHealth.die)
         {
             // Enable SpriteRenderer and BoxCollider2D
             spriteRenderer.enabled = true;

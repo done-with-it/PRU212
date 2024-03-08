@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
+    public static bool die = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy died!");
         animator.SetBool("Dead", true);
+        die = true;
         //this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
     }
