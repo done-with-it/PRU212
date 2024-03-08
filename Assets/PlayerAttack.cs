@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     {
         attackRange = range;
     }
-    private void OnDrawGizmos()
+    void OnDrawGizmosSeleted()
     {
         if (HitBox == null)
             return;
