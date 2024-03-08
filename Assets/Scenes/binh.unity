@@ -19281,6 +19281,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 126.29999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265064704073862715, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.699997
+      objectReference: {fileID: 0}
     - target: {fileID: 6572576277593889429, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_Name
       value: HPBar 1
@@ -19553,6 +19601,7 @@ MonoBehaviour:
   pointB: {fileID: 985383482}
   moveSpeed: 2
   stayDuration: 3
+  isFlipped: 0
 --- !u!95 &1582007183
 Animator:
   serializedVersion: 5
@@ -19620,7 +19669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0af70204f4c41348a68ea2b55239219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
+  attackRange: 1.5
   player: {fileID: 1694256323}
   mushroomMovement: {fileID: 1582007182}
   attackDelay: 0.1
@@ -20751,6 +20800,7 @@ MonoBehaviour:
   pointB: {fileID: 1463175458}
   moveSpeed: 2
   stayDuration: 3
+  isFlipped: 0
 --- !u!61 &1945117427
 BoxCollider2D:
   m_ObjectHideFlags: 0
