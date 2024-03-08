@@ -6,18 +6,23 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public int health = 100;
+    public int currentHealth; // Biến để lưu trữ lượng máu hiện tại
 
     public GameObject deathEffect;
     private Animator animator;
     private bool isHurt = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        currentHealth = health; // Gán giá trị ban đầu cho currentHealth
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Goblin") || collision.gameObject.CompareTag("Skeleton"))
         {
+            Debug.Log("Skeleton hit!");
             TakeDamage(10);
         }
     }
@@ -26,14 +31,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isHurt) // Chỉ xử lý sát thương nếu người chơi chưa bị tổn thương trước đó
         {
-            health -= damage;
+            currentHealth -= damage; // Giảm lượng máu hiện tại
             if (animator != null)
             {
                 animator.SetTrigger("Hurt");
             }
             StartCoroutine(DamageAnimation());
 
-            if (health <= 0)
+            if (currentHealth <= 0)
             {
                 Die();
             }
@@ -42,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(ResetHurtFlag()); // Gọi hàm để reset cờ isHurt sau một khoảng thời gian
         }
     }
+
     IEnumerator ResetHurtFlag()
     {
         yield return new WaitForSeconds(0.5f); // Đợi một khoảng thời gian trước khi reset cờ isHurt
@@ -63,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
         // Tạm dừng game trong 1 giây trước khi load lại scene
         StartCoroutine(ReloadScene());
     }
+
     IEnumerator ReloadScene()
     {
         yield return new WaitForSeconds(1f); // Đợi 1 giây trước khi load lại scene

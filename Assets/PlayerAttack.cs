@@ -25,12 +25,11 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetAttackRange(1.5f);
         Attack();
-        SetAttackRange(0);
     }
     void Attack()
     {
+        SetAttackRange(1.5f);
         if (Input.GetKeyUp(KeyCode.Q) && !isAttacking)
         {
             isAttacking = true;
@@ -41,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<Skeleton_control>().TakeDamage(attackDamage);
         }
+        SetAttackRange(0);
     }
     void SetAttackRange(float range)
     {
