@@ -14,6 +14,14 @@ public class PlayerHealth : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Goblin") || collision.gameObject.CompareTag("Skeleton"))
+        {
+            TakeDamage(10);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (!isHurt) // Chỉ xử lý sát thương nếu người chơi chưa bị tổn thương trước đó
