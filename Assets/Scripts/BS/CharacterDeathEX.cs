@@ -43,6 +43,7 @@ public class CharacterDeathEX : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             transform.position = respawnPoint.position;
+            
             anim.SetInteger("state", 1);
             die = true;
         }
