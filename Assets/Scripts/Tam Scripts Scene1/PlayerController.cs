@@ -89,7 +89,10 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
-        sprite.flipX = (dirX == PlayerState.Running && xAsis < 0f);
+        if (dirX == PlayerState.Running)
+        {
+            sprite.flipX = (xAsis < 0f);
+        }
     }
 
     private void Move()
