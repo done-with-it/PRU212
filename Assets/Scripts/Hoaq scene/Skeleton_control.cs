@@ -174,7 +174,8 @@ public class Skeleton_control : MonoBehaviour
         animator.SetBool("isDeath", true);
         this.enabled = false;
         
-        Invoke("FadeOutAndDestroy", 5f); // Sau 5 giây gọi hàm FadeOutAndDestroy
+        Invoke("FadeOutAndDestroy", 1f); // Sau 5 giây gọi hàm FadeOutAndDestroy
+        GetComponent<Collider2D>().enabled = false;
         Debug.Log("Enemy die!");
     }
 
