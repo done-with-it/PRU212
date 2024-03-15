@@ -26300,6 +26300,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -98
       objectReference: {fileID: 0}
+    - target: {fileID: 2013597097074133397, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3713451437396800344, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -26366,7 +26370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchorMin.x
@@ -26374,7 +26378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_SizeDelta.x
@@ -26426,11 +26430,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 963.99
+      value: 906
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 538.66
+      value: -482
       objectReference: {fileID: 0}
     - target: {fileID: 8289739351013471267, guid: 9c0591d9bc12bf440bf6c145205600cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28054,10 +28058,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -28493,7 +28497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3014469984778735664, guid: 5e8ed6add8acf9f4c9dcc6747694c6f1, type: 3}
       propertyPath: m_UiScaleMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3014469984778735664, guid: 5e8ed6add8acf9f4c9dcc6747694c6f1, type: 3}
       propertyPath: m_ReferenceResolution.x
