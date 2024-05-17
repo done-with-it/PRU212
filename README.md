@@ -1,7 +1,7 @@
 # Welcome to Warrior Adventure-PRU212
 ### You will find a new thing in here
 
-* Coming soon...
+* Link Game: https://drive.google.com/file/d/1JV5tw07a9JcuhWbzE8SCtOH0IL2KWw5t/view?usp=sharing
 
 ### Team Members:
 
